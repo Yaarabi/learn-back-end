@@ -1,0 +1,40 @@
+#form{
+
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh;
+    width: 40vw;
+    background-color: rgba(102, 102, 102, 0.9);
+    border-radius: 10px;
+    position: absolute;
+    top: 25vh;
+    left: 30vw;
+    div{
+        width: 70%;
+        height: 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-weight: bolder;
+        input{
+            width: 70%;
+            height: 30px;
+        }
+        
+    }
+    button{
+        height: 40px;
+        width: 100px;
+        border-radius: 10px;
+        font-weight: bolder;
+    }
+    img{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+}

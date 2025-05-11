@@ -1,0 +1,44 @@
+/* 
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+} */
+nav{
+    background-color: rgb(134, 134, 134);
+    display: flex;
+    justify-content: space-evenly;
+    h2{
+        background-color: rgb(104, 104, 104);
+        padding: 0;
+        height: 40px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 7px;
+        cursor: pointer;
+
+    }
+}
+
+table{
+    margin-top: 100px;
+    tr{
+        background-color: rgb(134, 134, 134);
+        th{
+            width: 15vw;
+            height: 40px;
+        }
+        td{
+            height: 30px;
+            text-align: center;
+        }
+    }
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
