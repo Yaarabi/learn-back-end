@@ -1,5 +1,6 @@
 
 import { Student } from "../models/schema.js";
+// import mongoose from "mongoose";
 
 // get
 
@@ -29,18 +30,39 @@ const postStud = async (req, res)=>{
 const updateStud = async (req, res)=>{
     const {id} = req.params
     const details = req.body
+    // if (!mongoose.Types.ObjectId.isValid(id)) {
+    //     return res.status(400).json({ message: "Invalid ID format" });
+    // }
     try{
-        const result = await student.findByIdAndUpdate(id, details, { new: true })
+        const result = await Student.findByIdAndUpdate(id, details, { new: true })
         if(!result){
-            return res.send({
-                success: false,
-                message: "student not found",
-            })
+            return  res.status(404).json({ message : "Not found" })
         }
+        
         res.status(200).json(result)
     }catch (err) {
-        res.status(500).json({ message : "Error in the putch" })
+        res.status(500).json({ message : "Error in the put" })
     }
 }
 
-export {getStud, postStud}
+// delete
+
+const deletStud = async (req, res)=>{
+    const {id} = req.params
+    const details = req.body
+    // if (!mongoose.Types.ObjectId.isValid(id)) {
+    //     return res.status(400).json({ message: "Invalid ID format" });
+    // }
+    try{
+        const result = await Student.findByIdAndDelete(id, details, { new: true })
+        if(!result){
+            return  res.status(404).json({ message : "Not found" })
+        }
+        
+        res.status(200).json(result)
+    }catch (err) {
+        res.status(500).json({ message : "Error in the delet" })
+    }
+}
+
+export {getStud, postStud, updateStud, deletStud}

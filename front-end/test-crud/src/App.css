@@ -28,7 +28,7 @@ table{
     tr{
         background-color: rgb(134, 134, 134);
         th{
-            width: 15vw;
+            width: 5vw;
             height: 40px;
         }
         td{
@@ -41,4 +41,7 @@ table{
 main{
     display: flex;
     justify-content: center;
+}
+img{
+    cursor: pointer;
 }

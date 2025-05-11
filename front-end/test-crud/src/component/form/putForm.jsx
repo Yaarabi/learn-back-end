@@ -1,20 +1,30 @@
 
-import { useState, useContext} from "react"
+
+import { useState, useEffect} from "react"
 import axios from "axios"
 import "./form.css"
+import { useContext } from "react"
+import { Id } from "../action"
 import { Context } from "../../App"
 
 
-const Form = () => {
-    
-    const {setShowList, setShowForm, a, setDb} = useContext(Context)
-    let [Name, setName]=useState('')
-    let [Email, setEmail]=useState('')
-    let [Note, setNote]=useState('')
-    let [Groupe, setGroupe]=useState('')
+const PutForm = (props) => {
 
-    const submit = ()=>{
-    axios.post("http://localhost:4000/api/add", {
+    const {id, obj} = useContext(Id)
+    const {a, setDb} = useContext(Context)
+    
+    useEffect(()=>{
+        console.log(id)
+        console.log(obj)
+    }, [id, obj])
+
+    let [Name, setName]=useState(obj?.name || '')
+    let [Email, setEmail]=useState(obj?.email || '')
+    let [Note, setNote]=useState(obj?.note || '')
+    let [Groupe, setGroupe]=useState(obj?.groupe || '')
+
+const update = ()=>{
+    axios.put(`http://localhost:4000/api/studUp/${id}`, {
     name: Name,
     email: Email,
     groupe: Groupe,
@@ -22,7 +32,7 @@ const Form = () => {
     })
     .then((res)=>{console.log(res)})
     .catch((err)=>{console.log(err)})
-    }
+}
 
 
 return (
@@ -65,13 +75,13 @@ return (
             onChange={(e)=>setNote(e.target.value)}
             placeholder="your Note"/>
         </div>       
-        <button onClick={()=>{submit(), setShowForm(false), setDb(a+1), setShowList(true)}}>Add</button>
+        <button onClick={()=>{ update(), props.fun(), setDb(a+1)}}>Update</button>
         
-        <img onClick={()=>{setShowForm(false), setShowList(true)}} src="/close.png" height={"20px"} alt="close icon" />
+        <img onClick={()=>{props.fun()}} src="/close.png" height={"20px"} alt="close icon" />
     </div>
     
 )
 }
 
-export default Form
+export default PutForm
 
